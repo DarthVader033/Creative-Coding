@@ -7,10 +7,28 @@
 </head>
 <body>
   <h1>🎵 Alle meine Entchen</h1>
+  
+  <div id="player-count" style="margin-bottom: 10px; font-weight: bold; font-size: 18px;">
+    👥 Verbundene Spieler: 1
+  </div>
+  
 
   <div class="play-button" onclick="startSong()" title="Los geht’s!"></div>
 
   <p>Tippe auf die Tasten, um gemeinsam zu spielen!</p>
+  <div id="note-counter">🎶 Gespielte Töne: 0</div>
+  <div id="game-over" style="font-size: 24px; font-weight: bold; color: red; margin-top: 10px;"></div>
+  <button id="restart-button" onclick="restartGame()" style="
+  margin-top: 15px;
+  padding: 10px 20px;
+  font-size: 18px;
+  background-color: #ffd500;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  display: none;
+">🔄 Neustarten</button>
   <img src="noten.jpg" alt="Alle meine Entchen Noten" />
 
   <div class="buttons">
@@ -22,10 +40,9 @@
     <button onclick="playNote('A4', this)">A</button>
   </div>
 
-
-
   <script src="Musikspielen.js"></script>
 
+  
 </body>
 </html>
 
