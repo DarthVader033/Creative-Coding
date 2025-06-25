@@ -1,0 +1,79 @@
+body {
+  font-family: sans-serif;
+  text-align: center;
+  padding: 20px;
+  background-color: #fefefe;
+}
+
+img {
+  width: 80%;
+  max-width: 800px;
+  height: auto;
+  margin-bottom: 20px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.play-button {
+  width: 80px;
+  height: 80px;
+  background-color: #ffd500;
+  border-radius: 50%;
+  position: relative;
+  margin: 10px auto 30px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease, background-color 0.3s;
+}
+
+.play-button::before {
+  content: '';
+  position: absolute;
+  left: 32%;
+  top: 25%;
+  width: 0;
+  height: 0;
+  border-left: 22px solid white;
+  border-top: 15px solid transparent;
+  border-bottom: 15px solid transparent;
+}
+
+.play-button:hover {
+  transform: scale(1.1);
+  background-color: #f0c000;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+button {
+  padding: 20px 40px;
+  font-size: 28px;
+  border: none;
+  border-radius: 20px;
+  background-color: #ffd500;
+  cursor: pointer;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.1s, background-color 0.3s;
+}
+
+button:hover {
+  transform: scale(1.1);
+}
+
+button.clicked {
+  animation: clickFlash 0.3s ease;
+}
+
+@keyframes clickFlash {
+  0% { background-color: lightgreen; }
+  100% { background-color: #ffd500; }
+}
+
+  
+  

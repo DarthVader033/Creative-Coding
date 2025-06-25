@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <title>Alle meine Entchen – Multiplayer</title>
+  <link rel="stylesheet" href="Musikspielen.css" />
+</head>
+<body>
+  <h1>🎵 Alle meine Entchen</h1>
+
+  <div class="play-button" onclick="startSong()" title="Los geht’s!"></div>
+
+  <p>Tippe auf die Tasten, um gemeinsam zu spielen!</p>
+  <img src="noten.jpg" alt="Alle meine Entchen Noten" />
+
+  <div class="buttons">
+    <button onclick="playNote('C4', this)">C</button>
+    <button onclick="playNote('D4', this)">D</button>
+    <button onclick="playNote('E4', this)">E</button>
+    <button onclick="playNote('F4', this)">F</button>
+    <button onclick="playNote('G4', this)">G</button>
+    <button onclick="playNote('A4', this)">A</button>
+  </div>
+
+  <script src="Musikspielen.js"></script>
+</body>
+</html>
+
+
