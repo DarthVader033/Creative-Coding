@@ -27,14 +27,9 @@ function connectToWebRooms() {
 
   socket.onopen = () => {
     console.log("🔌 Verbunden mit WebRooms");
+    socket.send(JSON.stringify(['*enter-room*', 'Musikspielen']));
+    socket.send(JSON.stringify(['*subscribe-client-count*']));
     updateCounterDisplay();
-  };
-
-  socket.onmessage = (event) => {
-    const message = JSON.parse(event.data);
-    if (message.note) {
-      playRemoteNote(message.note);
-    }
   };
 
   socket.onclose = () => {
@@ -42,13 +37,16 @@ function connectToWebRooms() {
   };
 }
 
+
 function sendNote(note) {
   if (socket && socket.readyState === WebSocket.OPEN) {
-    socket.send(JSON.stringify({ note }));
+    socket.send(JSON.stringify(['*broadcast-message*', { note }]));
   }
 }
 
+
 function playNote(note, buttonElement) {
+  console.log("hier zähl ich hoch")
   const audio = new Audio(`notes/${note}.mp3`);
   audio.play();
 
@@ -59,11 +57,16 @@ function playNote(note, buttonElement) {
   sendNote(note);
 
   noteCount++;
+  console.log(noteCount)
   updateCounterDisplay();
 }
 
+
+
+
 function playRemoteNote(note) {
   const btn = document.querySelector(`button[onclick*="${note}"]`);
+
   if (btn) {
     btn.classList.remove('clicked');
     void btn.offsetWidth;
@@ -73,7 +76,7 @@ function playRemoteNote(note) {
     audio.play();
   }
 
-  noteCount++;
+  //noteCount++;
   updateCounterDisplay();
 }
 
@@ -92,18 +95,12 @@ socket.onmessage = (event) => {
   const message = JSON.parse(event.data);
 
   // Ton empfangen
-  if (message.note) {
-    playRemoteNote(message.note);
-  }
-
-  // Spielerzahl empfangen
-  if (message.system === "clients" && message.count !== undefined) {
-    const playerCountElem = document.getElementById("player-count");
-    if (playerCountElem) {
-      playerCountElem.innerText = `👥 Verbundene Spieler: ${message.count}`;
-    }
+  if (message[0] === "note") {
+    playRemoteNote(message[1]);
   }
 };
 
 
 
+//broadcast 
+//client count 
